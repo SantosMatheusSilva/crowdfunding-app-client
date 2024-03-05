@@ -21,14 +21,14 @@ function SignupPage () {
         e.preventDefault ();
 
         // 
-        const reqBody = {email, password, name, picture};
+        const reqBody = {email, password, name};
 
         axios.post(`${API_URL}/auth/signup`, reqBody)
         .then(() => {
             navigate("/login");
         })
         .catch((error) => {
-            const errorDescription = error.response.data.message;
+            const errorDescription = error.data.message;
             setError(errorDescription);
         })
     }
