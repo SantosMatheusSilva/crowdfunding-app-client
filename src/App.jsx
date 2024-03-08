@@ -11,7 +11,7 @@ import CreateFunding from "./pages/CreateFunding.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 //import components bellow:
 import Navbar from "./components/Navbar.jsx";
-
+import Footer from "./components/Footer.jsx";
 function App() {
   
 
@@ -28,6 +28,7 @@ function App() {
         {/* <Route path="/dashboard" element={<Dashboard />} /> */} {/* Private route. This route will be used only when user is logged in */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

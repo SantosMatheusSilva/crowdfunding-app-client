@@ -13,8 +13,8 @@ function SignupPage () {
     /* const [picture, setPicture] = useState(""); */ // Attempt to add profile picture.
     const [error, setError] = useState("");
 
-    // Initialize the useNavigate hook
-    const navigate = useNavigate();
+      // Initialize the useNavigate hook
+      const navigate = useNavigate();
 
     /* const { signup } = authService; */
 

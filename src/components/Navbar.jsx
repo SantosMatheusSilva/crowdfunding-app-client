@@ -4,8 +4,8 @@ import logo from "../assets/logo.png";
 function Navbar () {
 
     return (
-        <nav style={{display: "flex", flexDirection: "row", justifyContent: "space-between", padding: "20px"}}>
-         <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignContent: "center", gap: "20px"}}>
+        <nav className="navbar" style={{display: "flex", flexDirection: "row", justifyContent: "space-between",  padding: "20px"}}>
+         <div className="nav-container" style={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "20px"}}>
          <div style={{display: "flex", flexDirection: "row", gap: "20px"}}>
                 <img src={logo} alt="" style={{width: "50px", height: "50px"}}/>
                 <h2>Vaquinha</h2>
