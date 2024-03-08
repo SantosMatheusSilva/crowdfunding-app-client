@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 // Initialize context
-const authContext = React.createContext();
+const AuthContext = React.createContext();
 
 // Create provider
 const API_URL = "localhost:5005";
@@ -13,7 +13,7 @@ function AuthProviderWrapper (props) {
 
     // Save the login JWT Token in the browser local storage.
     const saveToken = (token) => {
-        localStorage.setitem("authToken", token);
+        localStorage.setItem("authToken", token);
     }
 
     // Function to authenticate the user. verifies if the token is a valid one.
@@ -47,11 +47,15 @@ function AuthProviderWrapper (props) {
         authenticateUser();
     }
 
+    useEffect(() => {
+        authenticateUser();
+    }, []);
+
     return (
-        <authContext.Provider value = {{isLoggedIn, user, saveToken, authenticateUser, logOut}}>
+        <AuthContext.Provider value = {{isLoggedIn, user, saveToken, authenticateUser, logOut}}>
             {props.children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     )
 }
 
-export {authContext, AuthProviderWrapper};
+export {AuthContext, AuthProviderWrapper};

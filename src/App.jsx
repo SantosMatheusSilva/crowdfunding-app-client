@@ -9,12 +9,15 @@ import SupportPage from "./pages/SupportPage.jsx";
 import CreateFunding from "./pages/CreateFunding.jsx";
 /* import Dashboard from "./pages/Dashboard.jsx"; */
 import ErrorPage from "./pages/ErrorPage.jsx";
+//import components bellow:
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
   
 
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/signup" element={<SignupPage />} />
