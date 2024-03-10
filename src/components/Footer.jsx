@@ -3,8 +3,9 @@ import { VscGithub } from "react-icons/vsc";
 function Footer () {
 
     return (
-        <footer>
-            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+    <section className="flex flex-col min-h-screen">
+        <footer className="bg-gray-50 dark:bg-gray-500 dark:text-white items-center mt-auto" >
+            <div className='"flex justify-center items-center py-3 place-items-center"'>
             <a href="https://github.com/SantosMatheusSilva/crowdfunding-app-client">
                 <VscGithub style={{width: "30px", height: "30px"}}/>
             </a>
@@ -13,6 +14,7 @@ function Footer () {
             </p>
             </div>
         </footer>
+    </section>
     )
 }
 

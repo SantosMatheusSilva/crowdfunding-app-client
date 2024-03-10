@@ -14,7 +14,7 @@ import {
     PowerIcon,
   } from "@heroicons/react/24/solid";
    
-  export function SideBar() {
+  export default function SideBar() {
     return (
       <Card className="h-[calc(100vh-2rem)] w-full max-w-[15rem] p-4 shadow-xl shadow-blue-gray-900/5">
         <div className="mb-2 p-4">
