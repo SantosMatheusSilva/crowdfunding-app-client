@@ -27,6 +27,7 @@ function InstitutionDetailsPage () {
                 <h2>{institution.description}</h2>
                 <p>{institution.address}</p>
                 <p>{institution.email}</p>
+                <a href={institution.website}><p>{institution.website}</p></a>
                 <p>{institution.phone}</p>
             </article>
         </div>

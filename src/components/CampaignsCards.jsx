@@ -44,34 +44,3 @@ function CampaignsCard () {
 }
 
 export default CampaignsCard;
-
-/* 
-function InstitutionsCards () {
-    const [institutions, setInstitutions] = useState([]);
-
-    useEffect(() => {
-        axios
-        .get(`${API_URL}/api/institutions`)
-        .then((response) => {
-            setInstitutions(response.data);
-        })
-        .catch((error) => console.log(error));
-    }, []);
-
-    return (
-        <div>
-            {institutions.map ((institution) => (
-                <div key={institution._id}>
-                    <Link to={`/institutions-details-page/${institution._id}`}>
-                        <h2>{institution.name}</h2>
-                        <img src={institution.image} alt="" />
-                        <p>{institution.type}</p>
-                    </Link>
-                </div>
-            ))}
-        </div>
-    )
-}
-
-export default InstitutionsCards;
-*/

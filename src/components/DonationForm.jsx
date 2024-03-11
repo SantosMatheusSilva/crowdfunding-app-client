@@ -9,24 +9,25 @@ const API_URL = "http://localhost:5005";
 
 function DonationForm () { // props ??
     const [amount, setAmount] = useState(0);
-    const [paymentMethod, setPaymentMethod] = useState("credit_card, paypal");
-    /* const [status, setStatus] = useState([]); */
+    const [paymentMethod, setPaymentMethod] = useState("credit_card", "paypal", "other");
+    const [status, setStatus] = useState("pending", "completed", "canceled"); 
     const [comments, setComments] = useState("");
     const [errors, setErrors] = useState("");
+    const [donation, setDonation] = useState([]);
 
     const {userId} = useParams(); 
     const {campaignId} = useParams();
     const {user, authenticateUser} = useContext(AuthContext);
 
     const navigate = useNavigate(); // if the donation form is in another page. redirect to the campaign page.
-
+    
     const handleAmount = (e) => setAmount(e.target.value);
     const handlePaymentMethod = (e) => setPaymentMethod(e.target.value);
     const handleComment = (e) => setComments(e.target.value);
 
     const handleDonationSubmit = async (e) => {
         e.preventDefault();
-
+       
         if(!amount || amount <= 0){ 
             setErrors("Please enter an amount.");
             return;
@@ -44,7 +45,17 @@ function DonationForm () { // props ??
             const response = await axios
             .post(`${API_URL}/api/user/${user._id}/campaign/${campaignId}/donations`, reqBody);
             console.log(response.data);
+
+            setAmount("");
+            setPaymentMethod("");
+            setComments("");
+
+            alert("Thank you for your donation!");
+            setStatus("completed");
             navigate(`/campaigns-details-page/${campaignId}`);
+
+            const updatedDonation = response.data; // Attempt to update the donations array rendered on the page 
+            setDonation([...donation, updatedDonation]);
         }
         catch(error) {
             console.log(error);
@@ -55,7 +66,18 @@ function DonationForm () { // props ??
 
     return (
         <div className="border-2border-sky-500">
-            <h1>Donation Form</h1>
+            {/* <div>
+                <h2>Donations</h2>
+                {donation.map((donation, index) => {
+                    <div key={index}>
+                        <p>{donation.amount}</p>
+                        <p>{donation.donor}</p>
+                        <p>{donation.paymentMethod}</p>
+                        <p>{donation.comments}</p>
+                    </div>
+                })}
+            </div> */}
+            <h1>Make a Donation </h1>
             <div className="border-2border-sky-500">
                 <form onSubmit={handleDonationSubmit}>
                     <div>
@@ -67,6 +89,7 @@ function DonationForm () { // props ??
                         <select value={paymentMethod} onChange={handlePaymentMethod}>
                             <option value="credit_card">Credit Card</option>
                             <option value="paypal">PayPal</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
                     <div>
@@ -85,16 +108,3 @@ function DonationForm () { // props ??
 
 
 export default DonationForm;
-
-/* 
-const DonationSchema = new Schema({
-     amount: { type: Number, required: true },
-     date: { type: Date, default: Date.now },
-     donor: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-     paymentMethod: { type: String, required: true, enum: [ 'credit_card', 'paypal', 'other '] }, 
-     status: { type: String, enum: ['pending', 'completed', 'canceled'], default: 'pending' }, 
-    campaign: { type: mongoose.Schema.Types.ObjectId, ref: 'Campaign' },
-    comments: {type: String, default: '', required: false },
-   });
-
-*/

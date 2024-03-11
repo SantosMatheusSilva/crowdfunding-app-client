@@ -28,33 +28,60 @@ function CampaignsDetailsPage () {
                 <div>
                 <h1>{campaign.title}</h1>
                 <img src={campaign.campaignImage} alt={campaign.title} />
-                <h2><strong>Cause:</strong>{campaign.cause}</h2>
-                <p><strong>Status:</strong>{campaign.status}</p>
-                <p><strong>Campaign Description:</strong>{campaign.description}</p>
-                <p><strong>Goal:</strong>{campaign.goalAmount}</p>
-                <p><strong>Start:</strong>{campaign.startDate}</p>
-                <p><strong>Deadline:</strong>{campaign.endDate}</p>
-                <p><strong>Promoted by:</strong>{campaign.promoter}</p>
-                <p><strong>Promoter Introduction:</strong>{campaign.promIntroduction}</p>
-                <p><strong>Budget and Schedule:</strong>{campaign.budget}</p>
-                <p><strong>Proof Images and Docs:</strong>{campaign.proofImages}</p>
-                {/* <img src={campaign.proofImages} alt="" /> */} {/* this is an array with 3 images */}
-         {/*        {campaign.proofImages.map((image, index) => {
+                <h2><strong>Cause: </strong>{campaign.cause}</h2>
+                <p><strong>Status: </strong>{campaign.status}</p>
+                <p><strong>Campaign Description</strong></p>
+                <p>{campaign.description}</p>
+                <p><strong>Goal: </strong>{campaign.goalAmount}€</p>
+                <p><strong>Start Date: </strong>{campaign.startDate}</p>
+                <p><strong>Deadline: </strong>{campaign.endDate}</p>
+                <p><strong>Promoted by:</strong>{/* {campaign.promoter} */}</p>
+                {campaign.promoter && (
+                    <div>
+                        <p><strong> Name:</strong>{campaign.promoter.name}</p>
+                        <p><strong> Email:</strong>{campaign.promoter.email}</p>
+                    </div>
+                )}
+                <p><strong>Promoter Introduction</strong></p>
+                <p>{campaign.promIntroduction}</p>
+                <p><strong>Budget and Schedule</strong></p>
+                <p>{campaign.budget}</p>
+                <p><strong>Proof Images and Docs</strong></p>
+                    {campaign.images && campaign.images.map((images, index) => {
                     return (
                         <div key={index}>
-                            <img src={image} alt="" />
+                            <h3>Proof File {index + 1}</h3>
+                            <img src={images} alt={`Image ${index + 1}`} />
                         </div>
                     )
-                })} */}
-                <h3>Donations:</h3>
-                <li>{campaign.donations}</li>
-                
-<div>
+                })} 
+                 </div>
+                </article>
+                <article>
+                    <div>
+                        <h2><strong>Donations</strong></h2>
+                        {campaign.donations && campaign.donations.map((donation, index) => {
+                            return (
+                                <div key={index}>
+                                    <p><strong>Donor: </strong>{donation.donor} <span>{donation.date}</span></p>
+                                    <p><strong>Amount: </strong>{donation.amount}€</p>
+                                    <p><strong></strong>"{donation.comments}"</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </article>
+                <article>
+                    <div>
                     <DonationForm />
-                </div>
-                </div>
-            </article>
+                    </div>
+                </article>
+                <article>
+                    {/* place the comment component here */}
+                </article>
         </div>
+            
+       
 
     )
 }
