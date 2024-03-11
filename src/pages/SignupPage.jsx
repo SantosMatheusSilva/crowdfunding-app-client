@@ -57,8 +57,12 @@ function SignupPage () {
     }
 
     return(
-        <div>
-            <h1>Sign Up</h1>
+        <section className=" ">      
+          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <h1 className="text-3xl font-bold text-center p-5  bg-blue-500 text-white font-semibold rounded-md">
+                Sign Up
+            </h1>
+            <div  className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
             <form onSubmit={handleSignupSubmit}>
                {/*  <div>
                     <label>Profile Picture:</label>
@@ -66,7 +70,7 @@ function SignupPage () {
                 </div> */}
                 <div>
                     <label>User Name:</label>
-                    <input 
+                    <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                     type="text" 
                     name="user name" 
                     value={name} 
@@ -75,7 +79,7 @@ function SignupPage () {
 
                 <div>
                     <label>Email:</label>
-                    <input 
+                    <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                     type="email" 
                     name="email" 
                     value={email} 
@@ -84,19 +88,24 @@ function SignupPage () {
 
                 <div>
                     <label>Password:</label>
-                    <input 
+                    <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                     type="password" 
                     name="password" 
                     value={password} 
                     onChange={handlePassword}/>
                 </div>
 
-                <div>
-                    <button type="submit">Sign Up</button>
+                <div className="mb-6 flex justify-center mt-6">
+                    <button type="submit" className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-indigo-600 focus:outline-none ">
+                        Sign Up
+                    </button>
                 </div>
                 {error && <p>{error}</p>}
             </form>
+            </div>
         </div>
+        </section>
+
     )
 }
 

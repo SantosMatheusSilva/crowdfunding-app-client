@@ -22,8 +22,10 @@ function InstitutionsCards () {
         <div>
             {institutions.map ((institution) => (
                 <div key={institution._id}>
-                    <Link to={`/institutions-details-page/${institution.id}`}>
+                    <Link to={`/institutions-details-page/${institution._id}`}>
                         <h2>{institution.name}</h2>
+                        <img src={institution.image} alt="" />
+                        <p>{institution.type}</p>
                     </Link>
                 </div>
             ))}

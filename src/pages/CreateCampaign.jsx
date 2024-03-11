@@ -11,20 +11,20 @@ const API_URL = "http://localhost:5005";
 function CreateCampaign () {
     const [title, setTitle] = useState("");
     const [campaignImage, setCampaignImage] = useState("");
-    const [cause, setCause] = useState("education, health, emergencies, dreams, others");
+    const [cause, setCause] = useState(["Education", "Health", "Emergency", "Dreams", "Others"]);
     const [description, setDescription] = useState("");
     const [goalAmount, setGoalAmount] = useState("");
     const [endDate, setEndDate] = useState("");
-    const [images, setImages] = useState(["", "", ""]);
+    const [images, setImages] = useState("", "", "");
     const [errors, setErrors] = useState("");
     const [promIntroduction, setPromIntroduction] = useState("");
     const [budget, setBudget] = useState("");
     /* const [proofImages, setProofImages] = useState([]); */
 
     const {userId} = useParams(); 
-    const {currentUser, authenticateUser} = useContext(AuthContext);
+    const {user, authenticateUser} = useContext(AuthContext);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const user = async () => {
             if(userId){
             axios
@@ -36,9 +36,9 @@ function CreateCampaign () {
         }
     };
          user();  
-    }, [currentUser, userId]); 
+    }, [currentUser, userId]); */
     
-    // Initialize the useNavigate hook
+    // Here we Initialize the useNavigate hook
     const navigate = useNavigate();
 
 
@@ -71,17 +71,9 @@ function CreateCampaign () {
         const reqBody = {title, campaignImage, promIntroduction, budget, cause, description, goalAmount, endDate, images};
         console.log(reqBody);
 
-        
-        const token = localStorage.getItem('token');
-        if (token) {
-          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-          localStorage.setItem('token', token);
-          console.log(axios.defaults.headers.common);
-        }
-
         try{
             const response = await axios
-                .post(`${API_URL}/api/user/${userId}/campaign`, reqBody)
+                .post(`${API_URL}/api/user/${user._id}/campaign`, reqBody)
                 navigate("/support");
         } 
         catch(error) {
@@ -133,11 +125,11 @@ function CreateCampaign () {
                 <select className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                  value={cause}
                  onChange={handleCause}>
-                    <option value="dreams">Dream</option>
-                    <option value="education">Education</option>
-                    <option value="health">Health</option>
-                    <option value="emergencies">Emergency</option>
-                    <option value="others">Others</option>
+                    <option value="Dreams">Dream</option>
+                    <option value="Education">Education</option>
+                    <option value="Health">Health</option>
+                    <option value="Emergency">Emergency</option>
+                    <option value="Others">Others</option>
                 </select>
             </div>
             <div className="mb-6">

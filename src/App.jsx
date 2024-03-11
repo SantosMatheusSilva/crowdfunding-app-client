@@ -10,6 +10,7 @@ import CreateCampaign from "./pages/CreateCampaign.jsx";
 /* import Dashboard from "./pages/Dashboard.jsx"; */
 import ErrorPage from "./pages/ErrorPage.jsx";
 import InstitutionDetailsPage from "./pages/InstitutionDetailsPage.jsx";
+import CampaignsDetailsPage from "./pages/CampaignsDetailsPage.jsx";
 //import components bellow:
 import Navbar from "./components/Navbar.jsx";
 import SideBar from "./components/SideBar.jsx";
@@ -37,9 +38,9 @@ const location = useLocation();
         <Route path="/about" element={<AboutPage />} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="/create-campaign" element={<CreateCampaign />} />
-        {/* <Route path="/card" element={<CampaignsCard />} /> */} {/* CampaignsCards should be a component inside support page and not a page itself  */}
         {/* <Route path="/dashboard" element={<Dashboard />} /> */} {/* Private route. This route will be used only when user is logged in */}
-        <Route path="/institutions-details-page/:id" element={<InstitutionDetailsPage />} />
+        <Route path="/institutions-details-page/:institutionId" element={<InstitutionDetailsPage />} />
+        <Route path="/campaigns-details-page/:campaignId" element={<CampaignsDetailsPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
