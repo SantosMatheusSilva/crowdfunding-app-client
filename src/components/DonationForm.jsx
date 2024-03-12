@@ -1,32 +1,65 @@
  //Necessary imports:
-import { useParams, useNavigate} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context";
+//Necessary imports for stripe:
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 //Import / Declare the local host:
 const API_URL = "http://localhost:5005";
 
-function DonationForm () { // props ??
+//Stripe card 
+const CARD_OPTIONS = {
+	iconStyle: "solid",
+	style: {
+		base: {
+			iconColor: "#c4f0ff",
+			color: "#fff",
+			fontWeight: 500,
+			fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
+			fontSize: "16px",
+			fontSmoothing: "antialiased",
+			":-webkit-autofill": { color: "#fce883" },
+			"::placeholder": { color: "#87bbfd" }
+		},
+		invalid: {
+			iconColor: "#ffc7ee",
+			color: "#ffc7ee"
+		}
+	}
+}
+
+
+function DonationForm (props) { // props ??
+    const {campaignId, institutionId} = props;
     const [amount, setAmount] = useState(0);
     const [paymentMethod, setPaymentMethod] = useState("credit_card", "paypal", "other");
     const [status, setStatus] = useState("pending", "completed", "canceled"); 
     const [comments, setComments] = useState("");
     const [errors, setErrors] = useState("");
     const [donation, setDonation] = useState([]);
-
     const {userId} = useParams(); 
-    const {campaignId} = useParams();
     const {user, authenticateUser} = useContext(AuthContext);
+    //Stripe
+    const [success, setSuccess] = useState(false);
 
-    const navigate = useNavigate(); // if the donation form is in another page. redirect to the campaign page.
-    
+    // Initialize Stripe
+    const stripe = useStripe()
+    //Initialize Stripe Elements
+    const elements = useElements()
+
     const handleAmount = (e) => setAmount(e.target.value);
     const handlePaymentMethod = (e) => setPaymentMethod(e.target.value);
     const handleComment = (e) => setComments(e.target.value);
 
     const handleDonationSubmit = async (e) => {
         e.preventDefault();
+
+        const {error, paymentMethod }= await stripe.createPaymentMethod({
+            type: "card",
+            card: elements.getElement(CardElement),
+        })
        
         if(!amount || amount <= 0){ 
             setErrors("Please enter an amount.");
@@ -43,7 +76,7 @@ function DonationForm () { // props ??
 
         try {
             const response = await axios
-            .post(`${API_URL}/api/user/${user._id}/campaign/${campaignId}/donations`, reqBody);
+            .post(`${API_URL}/api/user/${user._id}/${campaignId ? "campaign" : "institutions"}/${campaignId || institutionId}/donations`, reqBody); // TEST
             console.log(response.data);
 
             setAmount("");
@@ -52,31 +85,25 @@ function DonationForm () { // props ??
 
             alert("Thank you for your donation!");
             setStatus("completed");
-            navigate(`/campaigns-details-page/${campaignId}`);
+            /* navigate(`/campaigns-details-page/${campaignId}`); */
+            window.location.reload();
 
-            const updatedDonation = response.data; // Attempt to update the donations array rendered on the page 
-            setDonation([...donation, updatedDonation]);
+            //const updatedDonation = response.data; // Attempt to update the donations array rendered on the page 
+            //setDonation([...donation, updatedDonation]);
         }
         catch(error) {
             console.log(error);
             setErrors("An error occurred while submiting your donation. Please try again.");
         }
 
+        useEffect (() =>{
+            setDundie(props.prize);
+        }, [props])
+
     }
 
     return (
         <div className="border-2border-sky-500">
-            {/* <div>
-                <h2>Donations</h2>
-                {donation.map((donation, index) => {
-                    <div key={index}>
-                        <p>{donation.amount}</p>
-                        <p>{donation.donor}</p>
-                        <p>{donation.paymentMethod}</p>
-                        <p>{donation.comments}</p>
-                    </div>
-                })}
-            </div> */}
             <h1>Make a Donation </h1>
             <div className="border-2border-sky-500">
                 <form onSubmit={handleDonationSubmit}>
@@ -91,6 +118,9 @@ function DonationForm () { // props ??
                             <option value="paypal">PayPal</option>
                             <option value="other">Other</option>
                         </select>
+                    </div>
+                    <div>
+                        <CardElement options={CARD_OPTIONS}/>
                     </div>
                     <div>
                         <label>Leave a message:</label>

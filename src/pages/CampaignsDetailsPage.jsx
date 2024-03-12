@@ -2,22 +2,38 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+//Necessary imports for stripe:
+import { Elements } from "@stripe/react-stripe-js"
+import { loadStripe } from "@stripe/stripe-js"
 // Import components:
 import DonationForm from "../components/DonationForm";
+
+const PUBLIC_KEY = "pk_test_51OtXZPFX1zDqFMubqatRbGTVyw8bDN2ygsAAl8JqFhcZE7ZO7VgJzi0XAHzmEND7uGJJfm01iMBKQ2eDAte7li4k00Pr85suiE";
+const stripeTestPromise = loadStripe(PUBLIC_KEY);
 
 //Import / Declare the local host:
 const API_URL = "http://localhost:5005";
 
 function CampaignsDetailsPage () {
+    const {id} = useParams();
     const { campaignId } = useParams();
     const [campaign, setCampaign] = useState({});
-    
+    const [donations, setDonations] = useState({});
+
     useEffect(() => {
         axios
-        .get(`${API_URL}/api/campaigns/${campaignId}`)  //"/campaigns/:id"
+        .get(`${API_URL}/api/campaigns/${campaignId}`) 
         .then((response) => {
             setCampaign(response.data);
+        })
+        .catch((error) => console.log(error));
+    }, [campaignId]);
+
+    useEffect(() => {
+        axios
+        .get(`${API_URL}/api/campaigns/${campaignId}/donations`) 
+        .then((response) => {
+            setDonations(response.data);
         })
         .catch((error) => console.log(error));
     }, []);
@@ -63,7 +79,15 @@ function CampaignsDetailsPage () {
                         {campaign.donations && campaign.donations.map((donation, index) => {
                             return (
                                 <div key={index}>
-                                    <p><strong>Donor: </strong>{donation.donor} <span>{donation.date}</span></p>
+                                
+                                    <p><strong>Donor: </strong> 
+                                     {donations.donor && (
+                                        <div>
+                                            <p>{donation.donor.name}</p>
+                                        </div>
+                                    )} 
+                                    </p>
+                                    <p><span>{donation.date}</span></p>
                                     <p><strong>Amount: </strong>{donation.amount}€</p>
                                     <p><strong></strong>"{donation.comments}"</p>
                                 </div>
@@ -73,7 +97,9 @@ function CampaignsDetailsPage () {
                 </article>
                 <article>
                     <div>
-                    <DonationForm />
+                    <Elements stripe={stripeTestPromise}>
+                    <DonationForm id={id} campaignId={campaignId} donations={donations} />
+                    </Elements>
                     </div>
                 </article>
                 <article>

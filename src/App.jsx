@@ -11,10 +11,12 @@ import CreateCampaign from "./pages/CreateCampaign.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import InstitutionDetailsPage from "./pages/InstitutionDetailsPage.jsx";
 import CampaignsDetailsPage from "./pages/CampaignsDetailsPage.jsx";
+import Payment from "./pages/Payment.jsx";
 //import components bellow:
 import Navbar from "./components/Navbar.jsx";
 import SideBar from "./components/SideBar.jsx";
 import Footer from "./components/Footer.jsx";
+
 
 function App() {
 const location = useLocation();
@@ -41,6 +43,8 @@ const location = useLocation();
         {/* <Route path="/dashboard" element={<Dashboard />} /> */} {/* Private route. This route will be used only when user is logged in */}
         <Route path="/institutions-details-page/:institutionId" element={<InstitutionDetailsPage />} />
         <Route path="/campaigns-details-page/:campaignId" element={<CampaignsDetailsPage />} />
+        <Route path="/payment-page" element={<Payment />} />
+        <Route path="/error-page" element={<ErrorPage />}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />

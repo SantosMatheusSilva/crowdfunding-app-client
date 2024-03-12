@@ -21,13 +21,13 @@ function CampaignsCard () {
     }, []);
 
     return(
-<div className="max-w-sm rounded overflow-hidden shadow-lg  pl-0.5">
+<div className="flex flex-wrap gap-5">
   {campaigns.map ((campaigns) => (
-    <div key={campaigns._id}>
+    <div key={campaigns._id}className="max-w-sm-md-lg rounded overflow-hidden shadow-lg  pl-0.5 w-96 h-96">
  
   <Link to={`/campaigns-details-page/${campaigns._id}`}>
-  <img className="w-full" src={campaigns.campaignImage} alt={campaigns.title}/>
-  <div className="px-6 py-4">
+  <img className="w-full rounded h-80" src={campaigns.campaignImage} alt={campaigns.title}/>
+  <div className="">
     <div className="font-bold text-xl mb-2">{campaigns.title}</div>
     <p className="text-gray-700 text-base">
       {campaigns.cause}
