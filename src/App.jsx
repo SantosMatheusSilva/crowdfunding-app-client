@@ -12,6 +12,7 @@ import ErrorPage from "./pages/ErrorPage.jsx";
 import InstitutionDetailsPage from "./pages/InstitutionDetailsPage.jsx";
 import CampaignsDetailsPage from "./pages/CampaignsDetailsPage.jsx";
 import Payment from "./pages/Payment.jsx";
+import UserProfilePage from "./pages/UserProfilePage.jsx";
 //import components bellow:
 import Navbar from "./components/Navbar.jsx";
 import SideBar from "./components/SideBar.jsx";
@@ -37,6 +38,7 @@ const location = useLocation();
         <Route path="/" element={<HomePage />}/>
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/user-profile-page" element={<UserProfilePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="/create-campaign" element={<CreateCampaign />} />

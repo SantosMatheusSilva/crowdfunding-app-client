@@ -4,13 +4,13 @@ import { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context";
 //Necessary imports for stripe:
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+//Import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 //Import / Declare the local host:
 const API_URL = "http://localhost:5005";
 
 //Stripe card 
-const CARD_OPTIONS = {
+/* const CARD_OPTIONS = {
 	iconStyle: "solid",
 	style: {
 		base: {
@@ -29,7 +29,7 @@ const CARD_OPTIONS = {
 		}
 	}
 }
-
+ */
 
 function DonationForm (props) { // props ??
     const {campaignId, institutionId} = props;
@@ -42,12 +42,12 @@ function DonationForm (props) { // props ??
     const {userId} = useParams(); 
     const {user, authenticateUser} = useContext(AuthContext);
     //Stripe
-    const [success, setSuccess] = useState(false);
+    //const [success, setSuccess] = useState(false);
 
     // Initialize Stripe
-    const stripe = useStripe()
+    //const stripe = useStripe()
     //Initialize Stripe Elements
-    const elements = useElements()
+    //const elements = useElements()
 
     const handleAmount = (e) => setAmount(e.target.value);
     const handlePaymentMethod = (e) => setPaymentMethod(e.target.value);
@@ -56,10 +56,10 @@ function DonationForm (props) { // props ??
     const handleDonationSubmit = async (e) => {
         e.preventDefault();
 
-        const {error, paymentMethod }= await stripe.createPaymentMethod({
+      /*   const {error, paymentMethod }= await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
-        })
+        }) */
        
         if(!amount || amount <= 0){ 
             setErrors("Please enter an amount.");
@@ -88,17 +88,13 @@ function DonationForm (props) { // props ??
             /* navigate(`/campaigns-details-page/${campaignId}`); */
             window.location.reload();
 
-            //const updatedDonation = response.data; // Attempt to update the donations array rendered on the page 
-            //setDonation([...donation, updatedDonation]);
         }
         catch(error) {
             console.log(error);
             setErrors("An error occurred while submiting your donation. Please try again.");
         }
 
-        useEffect (() =>{
-            setDundie(props.prize);
-        }, [props])
+       
 
     }
 
@@ -118,9 +114,6 @@ function DonationForm (props) { // props ??
                             <option value="paypal">PayPal</option>
                             <option value="other">Other</option>
                         </select>
-                    </div>
-                    <div>
-                        <CardElement options={CARD_OPTIONS}/>
                     </div>
                     <div>
                         <label>Leave a message:</label>
