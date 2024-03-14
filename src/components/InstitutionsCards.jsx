@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function InstitutionsCards () {
     const [institutions, setInstitutions] = useState([]);
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/api/institutions`)
+        .get(`${API_URL}/institutions`)
         .then((response) => {
             setInstitutions(response.data);
         })

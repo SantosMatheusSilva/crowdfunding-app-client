@@ -6,14 +6,14 @@ import '@material-tailwind/react'
 
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function CampaignsCard () {
   const [campaigns, setCampaigns] = useState([]);
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/api/campaigns`)
+        .get(`${API_URL}/campaigns`)
         .then((response) => {
             setCampaigns(response.data);
         })

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
 
 // Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 const CommentComponent = (props) => {
   const {campaignId, institutionId} = props;
@@ -18,7 +18,7 @@ const CommentComponent = (props) => {
     
       try {
         const response = await axios
-        .get(`${API_URL}/api/${"campaigns" || "institutions"}/${campaignId || institutionId}/comments`);
+        .get(`${API_URL}/${"campaigns" || "institutions"}/${campaignId || institutionId}/comments`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);

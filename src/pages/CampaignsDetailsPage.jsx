@@ -9,7 +9,7 @@ import CommentComponent from "../components/CommentComponent";
 
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function CampaignsDetailsPage () {
     const {user} = useContext(AuthContext);
@@ -20,7 +20,7 @@ function CampaignsDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/api/campaigns/${campaignId}`) 
+        .get(`${API_URL}/campaigns/${campaignId}`) 
         .then((response) => {
             setCampaign(response.data);
         })
@@ -29,7 +29,7 @@ function CampaignsDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/api/campaigns/${campaignId}/donations`) 
+        .get(`${API_URL}/campaigns/${campaignId}/donations`) 
         .then((response) => {
             setDonations(response.data);
         })
@@ -38,7 +38,7 @@ function CampaignsDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/api/campaigns/${campaignId}/comments`) 
+        .get(`${API_URL}/campaigns/${campaignId}/comments`) 
         .then((response) => {
             setComments(response.data);
         })
@@ -49,7 +49,7 @@ function CampaignsDetailsPage () {
             console.log('commentId:', commentId)
             try {
               await axios
-              .delete(`${API_URL}/api/user/${user._id}/campaigns/${campaignId}/comments/${commentId}`);
+              .delete(`${API_URL}/user/${user._id}/campaigns/${campaignId}/comments/${commentId}`);
               const commentToRemove = comments.find(comment => comment._id === commentId);
             if (commentToRemove) {
             setComments(comments.filter(comment => comment._id !== commentId));
@@ -80,30 +80,33 @@ function CampaignsDetailsPage () {
                 <p className="text-gray-600 bg-blue-200 border-2 rounded-full  p-2 text-xl"><strong className="text-sky-500 ">Goal: </strong>{campaign.goalAmount}€</p>
                 <p className="text-gray-600  bg-blue-200 border-2 rounded-full  p-2 text-xl"><strong className="text-sky-500 ">Start Date: </strong>{campaign.startDate}</p>
                 <p className="text-gray-600  bg-blue-200 border-2 rounded-full  p-2 text-xl"><strong className="text-sky-500 ">Deadline: </strong>{campaign.endDate}</p>
-                <div className="flex flex-col border-2 border-sky-500 p-1">
-                <p className="text-gray-600 "><strong>Promoter Contact</strong></p>
+                </div>
+                <div className="flex flex-col border-2 border-sky-500  rounded-md p-1 m-2 w-fit">
+                <p className="text-gray-600 "><strong className="text-sky-500 ">Promoter Contact</strong></p>
                 {campaign.promoter && (
-                    <div className="">
+                    <div className=" flex flex-row gap-2">
                         <p><strong> Name: </strong>{campaign.promoter.name}</p> 
                         <p><strong> Email: </strong>{campaign.promoter.email}</p>
                     </div>
                     
                 )}
                 </div>
-                </div>
+                <div className="flex flex-col gap-5">
                 <div className="flex flex-col  h-40 border-2 border-gray-600 rounded-md p-1">
-                    <h2><strong>Campaign Description</strong></h2>
+                    <h2 className="text-sky-500 text-bold"><strong>Campaign Description</strong></h2>
                     <p>{campaign.description}</p>
                     
                 </div>
                 <div className="flex flex-col  h-40 border-2 border-gray-600 rounded-md p-1">
-                    <h2><strong>Promoter Introduction</strong></h2>
+                    <h2 className="text-sky-500 text-bold"><strong>Promoter Introduction</strong></h2>
                     <p>{campaign.promIntroduction}</p>
                 </div>
                 <div className="flex flex-col  h-40 border-2 border-gray-600 rounded-md p-1">
-                    <h2><strong>Budget and Schedule</strong></h2>
+                    <h2 className="text-sky-500 text-bold"><strong>Budget and Schedule</strong></h2>
                     <p>{campaign.budget}</p>
                 </div>
+                </div>
+                <div className="">
                 <h2><strong>Proof Images and Docs</strong></h2>
                     {campaign.images && campaign.images.map((images, index) => {
                     return (
@@ -113,6 +116,7 @@ function CampaignsDetailsPage () {
                         </div>
                     )
                 })} 
+                </div>
                  </div>
                 </article>
                 <article>

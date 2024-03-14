@@ -4,7 +4,7 @@ import { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context";
 // Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function EditCampaign () {
     /* onst {userId, campaignId} = useParams(); */
@@ -58,7 +58,7 @@ function EditCampaign () {
 
         try{
             const response = await axios
-                .put(`${API_URL}/api/user/${userId}/campaign/${campaignId}`, reqBody)
+                .put(`${API_URL}/user/${userId}/campaign/${campaignId}`, reqBody)
                 navigate("/support");
         } 
         catch(error) {

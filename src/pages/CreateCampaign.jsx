@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import form from "../assets/form.svg";
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function CreateCampaign () {
     const [title, setTitle] = useState("");
@@ -59,7 +59,7 @@ function CreateCampaign () {
 
         try{
             const response = await axios
-                .post(`${API_URL}/api/user/${user._id}/campaign`, reqBody)
+                .post(`${API_URL}/user/${user._id}/campaign`, reqBody)
                 navigate("/support");
         } 
         catch(error) {

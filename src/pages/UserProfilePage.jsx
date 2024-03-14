@@ -5,7 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
 // Import the server 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 
 function UserProfilePage() {
@@ -21,7 +21,7 @@ function UserProfilePage() {
 
             if(storedToken) {
                 axios
-                .get(`${API_URL}/api/user/${id}`, 
+                .get(`${API_URL}/user/${id}`, 
                 {headers: {Authorization: `Bearer ${storedToken}`}})
                 .then((response) => {
                     setUserData(response.data);

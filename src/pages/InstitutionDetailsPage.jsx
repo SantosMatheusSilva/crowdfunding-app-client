@@ -7,7 +7,7 @@ import CommentComponent from "../components/CommentComponent";
 import { AuthContext } from "../context/auth.context";
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function InstitutionDetailsPage () {
     const {user} = useContext(AuthContext);
@@ -21,7 +21,7 @@ function InstitutionDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/api/institutions/${institutionId}`)
+        .get(`${API_URL}/institutions/${institutionId}`)
         .then((response) => {
             setInstitution(response.data);
         })
@@ -31,7 +31,7 @@ function InstitutionDetailsPage () {
     
      useEffect(() => {
         axios
-        .get(`${API_URL}/api/institutions/${institutionId}/donations`) 
+        .get(`${API_URL}/institutions/${institutionId}/donations`) 
         .then((response) => {
             setDonations(response.data);
         })
@@ -40,7 +40,7 @@ function InstitutionDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/api/institutions/${institutionId}/comments`) 
+        .get(`${API_URL}/institutions/${institutionId}/comments`) 
         .then((response) => {
             setComments(response.data);
         })
