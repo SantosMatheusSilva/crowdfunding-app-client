@@ -23,6 +23,7 @@ function CreateCampaign () {
     const {userId} = useParams(); 
     const {user, authenticateUser} = useContext(AuthContext);
 
+    console.log('User --->', user);
     
     // Here we Initialize the useNavigate hook
     const navigate = useNavigate();

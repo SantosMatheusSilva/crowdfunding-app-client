@@ -44,7 +44,7 @@ const location = useLocation();
         <Route path="/about" element={<AboutPage />} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="/create-campaign" element={<CreateCampaign />} />
-        <Route path= "/edit-campaign/:campaignId" element={<EditCampaign />} />
+        <Route path="/edit-campaign/:campaignId" element={<EditCampaign />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */} {/* Private route. This route will be used only when user is logged in */}
         <Route path="/institutions-details-page/:institutionId" element={<InstitutionDetailsPage />} />
         <Route path="/campaigns-details-page/:campaignId" element={<CampaignsDetailsPage />} />
