@@ -5,7 +5,7 @@ import axios from "axios";
 const AuthContext = React.createContext();
 
 // Create provider
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function AuthProviderWrapper (props) {
     const [user, setUser] = useState("");
