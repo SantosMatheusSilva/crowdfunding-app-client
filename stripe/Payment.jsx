@@ -8,20 +8,25 @@ function Payment() {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("/config").then(async (r) => {
-      const { publishableKey } = await r.json();
-      setStripePromise(loadStripe(publishableKey));
-    });
+    axios.get("/config")
+      .then(async (response) => {
+        const { publishableKey } = response.data;
+        setStripePromise(loadStripe(publishableKey));
+      })
+      .catch(error => {
+        console.error('Error fetching config:', error);
+      });
   }, []);
 
   useEffect(() => {
-    fetch("/create-payment-intent", {
-      method: "POST",
-      body: JSON.stringify({}),
-    }).then(async (result) => {
-      var { clientSecret } = await result.json();
-      setClientSecret(clientSecret);
-    });
+    axios.post("/create-payment-intent", {})
+      .then(async (response) => {
+        const { clientSecret } = response.data;
+        setClientSecret(clientSecret);
+      })
+      .catch(error => {
+        console.error('Error creating payment intent:', error);
+      });
   }, []);
 
   return (

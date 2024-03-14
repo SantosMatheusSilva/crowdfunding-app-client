@@ -3,6 +3,7 @@ import { useParams} from 'react-router-dom';
 import { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context";
+import Completion from "/stripe/Completion.jsx";
 //Necessary imports for stripe:
 //Import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
@@ -102,8 +103,8 @@ const handleDonationSubmit = async (e) => {
 
      // === here we have 2 ways to redirect to the payment form ===
        //1 - // Redirect the user to the payment form
-         window.location.href = paymentFormUrl;
-
+         //window.location.href = paymentFormUrl
+         window.location.origin/Completion
       // in this code, we gonna be redirected to the payment form
       //2 - // return_url: `${window.location.origin}/completion`,
     } catch (error) {
