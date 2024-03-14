@@ -13,6 +13,7 @@ import InstitutionDetailsPage from "./pages/InstitutionDetailsPage.jsx";
 import CampaignsDetailsPage from "./pages/CampaignsDetailsPage.jsx";
 import Payment from "./pages/Payment.jsx";
 import UserProfilePage from "./pages/UserProfilePage.jsx";
+import EditCampaign from "./pages/EditCampaign.jsx";
 //import components bellow:
 import Navbar from "./components/Navbar.jsx";
 import SideBar from "./components/SideBar.jsx";
@@ -42,9 +43,11 @@ const location = useLocation();
         <Route path="/about" element={<AboutPage />} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="/create-campaign" element={<CreateCampaign />} />
+        <Route path= "/edit-campaign" element={<EditCampaign />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */} {/* Private route. This route will be used only when user is logged in */}
         <Route path="/institutions-details-page/:institutionId" element={<InstitutionDetailsPage />} />
         <Route path="/campaigns-details-page/:campaignId" element={<CampaignsDetailsPage />} />
+        <Route path="/comment/:commentId"  />
         <Route path="/payment-page" element={<Payment />} />
         <Route path="/error-page" element={<ErrorPage />}/>
         <Route path="*" element={<ErrorPage />} />

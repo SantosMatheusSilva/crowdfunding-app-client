@@ -26,7 +26,7 @@ function Payment() {
 	return (
     // Elements Stripe loaded with Test Mode
 		<Elements stripe={stripeTestPromise}>
-			<PaymentForm prize={dundie} />
+			<PaymentForm />
 		</Elements>
 	)
 }

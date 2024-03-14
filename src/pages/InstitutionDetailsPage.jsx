@@ -1,23 +1,21 @@
 //Necessary imports:
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import DonationForm from "../components/DonationForm";
-//Necessary imports for stripe:
-import { Elements } from "@stripe/react-stripe-js"
-import { loadStripe } from "@stripe/stripe-js"
-
-const PUBLIC_KEY = "pk_test_51OtXZPFX1zDqFMubqatRbGTVyw8bDN2ygsAAl8JqFhcZE7ZO7VgJzi0XAHzmEND7uGJJfm01iMBKQ2eDAte7li4k00Pr85suiE";
-const stripeTestPromise = loadStripe(PUBLIC_KEY);
+import CommentComponent from "../components/CommentComponent";
+import { AuthContext } from "../context/auth.context";
 
 //Import / Declare the local host:
 const API_URL = "http://localhost:5005";
 
 function InstitutionDetailsPage () {
+    const {user} = useContext(AuthContext);
     const {id} = useParams();
     const { institutionId } = useParams();
     const [institution, setInstitution] = useState({});
     const [donations, setDonations] = useState({});
+    const [comments, setComments] = useState([]);
     
     
 
@@ -36,6 +34,15 @@ function InstitutionDetailsPage () {
         .get(`${API_URL}/api/institutions/${institutionId}/donations`) 
         .then((response) => {
             setDonations(response.data);
+        })
+        .catch((error) => console.log(error));
+    }, [institutionId]);
+
+    useEffect(() => {
+        axios
+        .get(`${API_URL}/api/institutions/${institutionId}/comments`) 
+        .then((response) => {
+            setComments(response.data);
         })
         .catch((error) => console.log(error));
     }, []);
@@ -86,11 +93,30 @@ when the donation is done the user should be redirected to the user dashboard or
             </article>
             <article>
                 <div>
-                <Elements stripe={stripeTestPromise}>
                 <DonationForm id={id} institutionId={institutionId} donations={donations} />
-                </Elements>
                 </div>
             </article>
+            <section>
+                        <div>
+                        <h2><strong>Comments</strong></h2>
+                        {institution.comments && institution.comments.map((comment, index) => {
+                            return (
+                                <div key={index}>
+                                     <p><strong>{comment.user.name}</strong></p> 
+                                    <p><span>{comment.date}</span></p>
+                                    <p>"{comment.comment}"</p>
+                                    {comment._id && (
+                                        <button onClick={() => handleDeleteComment(comment._id)}>delete</button>
+                                    )}
+                                    
+                                </div>
+                            )
+                        })}
+                        </div>
+            </section>
+            <section>
+                <CommentComponent institutionId={institutionId}  />
+            </section>
         </div>
 
     )

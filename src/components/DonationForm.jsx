@@ -9,28 +9,6 @@ import { AuthContext } from "../context/auth.context";
 //Import / Declare the local host:
 const API_URL = "http://localhost:5005";
 
-//Stripe card 
-/* const CARD_OPTIONS = {
-	iconStyle: "solid",
-	style: {
-		base: {
-			iconColor: "#c4f0ff",
-			color: "#fff",
-			fontWeight: 500,
-			fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-			fontSize: "16px",
-			fontSmoothing: "antialiased",
-			":-webkit-autofill": { color: "#fce883" },
-			"::placeholder": { color: "#87bbfd" }
-		},
-		invalid: {
-			iconColor: "#ffc7ee",
-			color: "#ffc7ee"
-		}
-	}
-}
- */
-
 function DonationForm (props) { // props ??
     const {campaignId, institutionId} = props;
     const [amount, setAmount] = useState(0);
