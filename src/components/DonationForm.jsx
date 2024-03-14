@@ -64,6 +64,7 @@ function DonationForm (props) { // props ??
             alert("Thank you for your donation!");
             setStatus("completed");
             /* navigate(`/campaigns-details-page/${campaignId}`); */
+            
             window.location.reload();
 
         }
@@ -75,7 +76,44 @@ function DonationForm (props) { // props ??
        
 
     }
+// ================================ here we link the donation button to the payment stripe system ================================
+// const handleDonationSubmit = async (e) => {
+//     e.preventDefault();
 
+//     if (!amount || amount <= 0) { 
+//         setErrors("Please enter a valid amount.");
+//         return;
+//     }
+    
+//     if (!paymentMethod) { 
+//         setErrors("Please select a payment method.");
+//         return;
+//     }
+
+//     const reqBody = { amount, paymentMethod, comments };
+//     console.log(reqBody);
+
+//     try {
+//         const response = await axios.post(`${API_URL}/create-payment-intent`, reqBody);
+//         console.log(response.data);
+
+//         // Assuming response.data contains the URL of the payment form
+//         const paymentFormUrl = response.data.paymentFormUrl;
+
+//       === here we have 2 ways to redirect to the payment form ===
+//        1 - // Redirect the user to the payment form
+//          window.location.href = paymentFormUrl;
+
+//        in this code, we gonna be redirected to the payment form
+//       2 - // return_url: `${window.location.origin}/completion`,
+//     } catch (error) {
+//         console.log(error);
+//         setErrors("An error occurred while submitting your donation. Please try again.");
+//     }
+// }
+
+// ================================ here we end the block of code for linking the donation button to the stripe payment system  ================================
+    
     return (
         <div className="border-2border-sky-500">
             <h1>Make a Donation </h1>
