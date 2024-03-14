@@ -19,7 +19,7 @@ function EditCampaign () {
     const [promIntroduction, setPromIntroduction] = useState("");
     const [budget, setBudget] = useState("");
     const [status, setStatus] = useState(["active", "completed", "canceled"]);
-
+    const {userId, campaignId} = useParams();
     const {user, authenticateUser} = useContext(AuthContext);
     
     // Initialize the useNavigate hook
@@ -58,7 +58,7 @@ function EditCampaign () {
 
         try{
             const response = await axios
-                .put(`${API_URL}/user/${userId}/campaign/${campaignId}`, reqBody)
+                .put(`${API_URL}/api/user/${userId}/campaign/${campaignId}`, reqBody)
                 navigate("/support");
         } 
         catch(error) {

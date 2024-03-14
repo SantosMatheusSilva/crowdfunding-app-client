@@ -13,7 +13,7 @@ function CampaignsCard () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/campaigns`)
+        .get(`${API_URL}/api/campaigns`)
         .then((response) => {
             setCampaigns(response.data);
         })

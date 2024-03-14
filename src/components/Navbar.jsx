@@ -19,7 +19,7 @@ function Navbar () {
             <div className="flex items-center  justify-end space-x-4 text-2xl">
                 
                 <Link to="/about">About</Link>
-                <Link to="/create-campaign/:userId">Create</Link>
+                <Link to="/create-campaign">Create</Link>
                 <Link to="/support">Support</Link>
                 <Link to="/login">Login</Link>
             </div>

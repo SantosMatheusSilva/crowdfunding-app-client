@@ -59,7 +59,7 @@ function CreateCampaign () {
 
         try{
             const response = await axios
-                .post(`${API_URL}/user/${userId}/campaign`, reqBody)
+                .post(`${API_URL}/api/user/${userId}/campaign`, reqBody)
                 navigate("/support");
         } 
         catch(error) {

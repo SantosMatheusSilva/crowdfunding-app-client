@@ -18,7 +18,7 @@ const CommentComponent = (props) => {
     
       try {
         const response = await axios
-        .get(`${API_URL}/${"campaigns" || "institutions"}/${campaignId || institutionId}/comments`);
+        .get(`${API_URL}/api/${"campaigns" || "institutions"}/${campaignId || institutionId}/comments`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);

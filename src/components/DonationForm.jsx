@@ -95,7 +95,7 @@ const handleDonationSubmit = async (e) => {
     console.log(reqBody);
 
     try {
-        const response = await axios.post(`${API_URL}/create-payment-intent`, reqBody);
+        const response = await axios.post(`${API_URL}/api/create-payment-intent`, reqBody);
         console.log(response.data);
  
     // getting the clientsecret from the response body

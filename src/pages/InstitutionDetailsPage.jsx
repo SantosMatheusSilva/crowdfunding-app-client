@@ -21,7 +21,7 @@ function InstitutionDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/institutions/${institutionId}`)
+        .get(`${API_URL}/api/institutions/${institutionId}`)
         .then((response) => {
             setInstitution(response.data);
         })
@@ -31,7 +31,7 @@ function InstitutionDetailsPage () {
     
      useEffect(() => {
         axios
-        .get(`${API_URL}/institutions/${institutionId}/donations`) 
+        .get(`${API_URL}/api/institutions/${institutionId}/donations`) 
         .then((response) => {
             setDonations(response.data);
         })
@@ -40,7 +40,7 @@ function InstitutionDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/institutions/${institutionId}/comments`) 
+        .get(`${API_URL}/api/institutions/${institutionId}/comments`) 
         .then((response) => {
             setComments(response.data);
         })

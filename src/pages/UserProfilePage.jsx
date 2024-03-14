@@ -21,7 +21,7 @@ function UserProfilePage() {
 
             if(storedToken) {
                 axios
-                .get(`${API_URL}/user/${id}`, 
+                .get(`${API_URL}/api/user/${id}`, 
                 {headers: {Authorization: `Bearer ${storedToken}`}})
                 .then((response) => {
                     setUserData(response.data);

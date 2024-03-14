@@ -20,7 +20,7 @@ function CampaignsDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/campaigns/${campaignId}`) 
+        .get(`${API_URL}/api/campaigns/${campaignId}`) 
         .then((response) => {
             setCampaign(response.data);
         })
@@ -29,7 +29,7 @@ function CampaignsDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/campaigns/${campaignId}/donations`) 
+        .get(`${API_URL}/api/campaigns/${campaignId}/donations`) 
         .then((response) => {
             setDonations(response.data);
         })
@@ -38,7 +38,7 @@ function CampaignsDetailsPage () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/campaigns/${campaignId}/comments`) 
+        .get(`${API_URL}/api/campaigns/${campaignId}/comments`) 
         .then((response) => {
             setComments(response.data);
         })
@@ -49,7 +49,7 @@ function CampaignsDetailsPage () {
             console.log('commentId:', commentId)
             try {
               await axios
-              .delete(`${API_URL}/user/${user._id}/campaigns/${campaignId}/comments/${commentId}`);
+              .delete(`${API_URL}/api/user/${user._id}/campaigns/${campaignId}/comments/${commentId}`);
               const commentToRemove = comments.find(comment => comment._id === commentId);
             if (commentToRemove) {
             setComments(comments.filter(comment => comment._id !== commentId));

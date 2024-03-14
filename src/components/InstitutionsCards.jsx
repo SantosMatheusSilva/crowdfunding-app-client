@@ -11,7 +11,7 @@ function InstitutionsCards () {
 
     useEffect(() => {
         axios
-        .get(`${API_URL}/institutions`)
+        .get(`${API_URL}/api/institutions`)
         .then((response) => {
             setInstitutions(response.data);
         })
