@@ -70,7 +70,43 @@ function DonationForm (props) { // props ??
      }
    
     return (
-        <div className="border-2border-sky-500">
+        <div className=" border-2 border-sky-200 rounded p-4 h-80 w-96">
+        <h1>Make a Donation </h1>
+        <div className="border-2border-sky-500 p-4">
+            <form onSubmit={handleDonationSubmit}>
+                <div className="p-2">
+                    <label className="p-2">Amount:</label>
+                    <input type="text" value={amount} onChange={handleAmount} className="border-2 border-gray-300 rounded"/>
+                </div>
+                <div>
+                    <label className="p-2">Payment Method:</label>
+                    <select value={paymentMethod} onChange={handlePaymentMethod} className="border-2 border-gray-300 rounded">
+                        <option value="credit_card">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label className="p-2">Leave a message:</label>
+                    <textarea type="text" value={comments} onChange={handleComment} cols="20" rows="2" className="border-2 border-gray-300 rounded w-80" placeholder='Enter your message'>
+                   
+                    </textarea>
+                </div>
+                <div className="flex flex-col p-3  ">
+                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded">Donate</button>
+                    <p>{errors}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+      
+    )
+}
+
+
+export default DonationForm;
+
+ {/*  <div className="border-2border-sky-500">
             <h1>Make a Donation </h1>
             <div className="border-2border-sky-500">
                 <form onSubmit={handleDonationSubmit}>
@@ -96,9 +132,4 @@ function DonationForm (props) { // props ??
                     </div>
                 </form>
             </div>
-        </div>
-    )
-}
-
-
-export default DonationForm;
+</div> */ }

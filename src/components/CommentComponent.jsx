@@ -50,7 +50,26 @@ const CommentComponent = (props) => {
 
 
   return (
-    <div>
+    <div className=" border-2 border-sky-200 rounded p-4 h-80 w-96">
+    <h1>Leave a Comment</h1>
+    <div className="flex flex-col p-3  ">
+      <textarea className="border-2 border-gray-200 rounded h-40 w-70"
+        name="newComment"
+        value={newComment}
+        onChange={(e) => setNewComment(e.target.value)}
+        placeholder="Add a comment..."
+      />
+      <button type="button" onClick={handleAddComment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded ">Add Comment</button>
+    </div>
+  </div>
+  
+  );
+};
+
+export default CommentComponent;
+
+
+ /*  <div>
       <h3>Leave a Comment</h3>
       <div>
         <textarea
@@ -61,8 +80,4 @@ const CommentComponent = (props) => {
         />
         <button type="button" onClick={handleAddComment}>Add Comment</button>
       </div>
-    </div>
-  );
-};
-
-export default CommentComponent;
+    </div> */
