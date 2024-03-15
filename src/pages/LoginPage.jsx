@@ -39,7 +39,7 @@ function LoginPage () {
 
             saveToken(response.data.authToken);
             authenticateUser();
-            navigate("/"); // Redirect to home page after login.
+            navigate("/about"); // Redirect to home page after login.
         })
         .catch((error) => {
             /* const errorDescription = data.message; */
