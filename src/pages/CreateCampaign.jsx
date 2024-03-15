@@ -23,8 +23,6 @@ function CreateCampaign () {
     const {userId} = useParams(); 
     const {user, authenticateUser} = useContext(AuthContext);
 
-    console.log('User --->', user);
-    
     // Here we Initialize the useNavigate hook
     const navigate = useNavigate();
 
@@ -60,7 +58,7 @@ function CreateCampaign () {
 
         try{
             const response = await axios
-                .post(`${API_URL}/api/user/${userId}/campaign`, reqBody)
+                .post(`${API_URL}/api/user/${user._id}/campaign`, reqBody)
                 navigate("/support");
         } 
         catch(error) {
