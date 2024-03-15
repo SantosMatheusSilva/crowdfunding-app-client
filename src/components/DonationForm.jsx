@@ -32,90 +32,50 @@ function DonationForm (props) { // props ??
     const handlePaymentMethod = (e) => setPaymentMethod(e.target.value);
     const handleComment = (e) => setComments(e.target.value);
 
-    // const handleDonationSubmit = async (e) => {
-    //     e.preventDefault();
+     const handleDonationSubmit = async (e) => {
+         e.preventDefault();
 
-    //   /*   const {error, paymentMethod }= await stripe.createPaymentMethod({
-    //         type: "card",
-    //         card: elements.getElement(CardElement),
-    //     }) */
        
-    //     if(!amount || amount <= 0){ 
-    //         setErrors("Please enter an amount.");
-    //         return;
-    //     }
+       
+         if(!amount || amount <= 0){ 
+             setErrors("Please enter an amount.");
+             return;
+         }
         
-    //      if(!paymentMethod){ 
-    //         setErrors("Please select a payment method.");
-    //         return;
-    //     }
+          if(!paymentMethod){ 
+             setErrors("Please select a payment method.");
+             return;
+         }
        
-    //     const reqBody = {amount, paymentMethod, comments};
-    //     console.log(reqBody);
+         const reqBody = {amount, paymentMethod, comments};
+         console.log(reqBody);
 
-    //     try {
-    //         const response = await axios
-    //         .post(`${API_URL}/user/${user._id}/${campaignId ? "campaign" : "institutions"}/${campaignId || institutionId}/donations`, reqBody); // TEST
-    //         console.log(response.data);
+         try {
+             const response = await axios
+             .post(`${API_URL}/user/${user._id}/${campaignId ? "campaign" : "institutions"}/${campaignId || institutionId}/donations`, reqBody); // TEST
+             console.log(response.data);
 
-    //         setAmount("");
-    //         setPaymentMethod("");
-    //         setComments("");
+             setAmount("");
+             setPaymentMethod("");
+             setComments("");
 
-    //         alert("Thank you for your donation!");
-    //         setStatus("completed");
-    //         /* navigate(`/campaigns-details-page/${campaignId}`); */
+             alert("Thank you for your donation!");
+             setStatus("completed");
+             /* navigate(`/campaigns-details-page/${campaignId}`); */
             
-    //         window.location.reload();
+             window.location.reload();
 
-    //     }
-    //     catch(error) {
-    //         console.log(error);
-    //         setErrors("An error occurred while submiting your donation. Please try again.");
-    //     }
+        }
+         catch(error) {
+             console.log(error);
+            setErrors("An error occurred while submiting your donation. Please try again.");
+        }
 
        
 
-    // }
+     }
 // ================================ here we link the donation button to the payment stripe system ================================
-const handleDonationSubmit = async (e) => {
-    e.preventDefault();
 
-    if (!amount || amount <= 0) { 
-        setErrors("Please enter a valid amount.");
-        return;
-    }
-    
-    if (!paymentMethod) { 
-        setErrors("Please select a payment method.");
-        return;
-    }
-
-    const reqBody = { amount, paymentMethod, comments };
-    console.log(reqBody);
-
-    try {
-        const response = await axios.post(`${API_URL}/api/create-payment-intent`, reqBody);
-        console.log(response.data);
- 
-    // getting the clientsecret from the response body
-    
-    //   const { clientSecret } = response.data;
-
-        // Assuming response.data contains the URL of the payment form
-        const paymentFormUrl = response.data.paymentFormUrl;
-
-     // === here we have 2 ways to redirect to the payment form ===
-       //1 - // Redirect the user to the payment form
-         //window.location.href = paymentFormUrl
-         window.location.origin/Completion
-      // in this code, we gonna be redirected to the payment form
-      //2 - // return_url: `${window.location.origin}/completion`,
-    } catch (error) {
-        console.log(error);
-        setErrors("An error occurred while submitting your donation. Please try again.");
-    }
-}
 
 // ================================ here we end the block of code for linking the donation button to the stripe payment system  ================================
     
