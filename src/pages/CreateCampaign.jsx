@@ -112,7 +112,7 @@ function CreateCampaign () {
                 <select className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                  value={cause}
                  onChange={handleCause}>
-                    <option value="Dreams">Dream</option>
+                    <option value="Dream">Dream</option>
                     <option value="Education">Education</option>
                     <option value="Health">Health</option>
                     <option value="Emergency">Emergency</option>
