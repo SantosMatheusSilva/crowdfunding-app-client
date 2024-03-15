@@ -20,13 +20,7 @@ function DonationForm (props) { // props ??
     const [donation, setDonation] = useState([]);
     const {userId} = useParams(); 
     const {user, authenticateUser} = useContext(AuthContext);
-    //Stripe
-    //const [success, setSuccess] = useState(false);
-
-    // Initialize Stripe
-    //const stripe = useStripe()
-    //Initialize Stripe Elements
-    //const elements = useElements()
+  
 
     const handleAmount = (e) => setAmount(e.target.value);
     const handlePaymentMethod = (e) => setPaymentMethod(e.target.value);
@@ -61,7 +55,7 @@ function DonationForm (props) { // props ??
 
              alert("Thank you for your donation!");
              setStatus("completed");
-             /* navigate(`/campaigns-details-page/${campaignId}`); */
+             
             
              window.location.reload();
 
@@ -74,11 +68,7 @@ function DonationForm (props) { // props ??
        
 
      }
-// ================================ here we link the donation button to the payment stripe system ================================
-
-
-// ================================ here we end the block of code for linking the donation button to the stripe payment system  ================================
-    
+   
     return (
         <div className="border-2border-sky-500">
             <h1>Make a Donation </h1>
