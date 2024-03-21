@@ -57,19 +57,18 @@ function SignupPage () {
     }
 
     return(
-        <section className=" ">      
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <h1 className="text-3xl font-bold text-center p-5  bg-blue-500 text-white font-semibold rounded-md">
+        <section className="bg-gray-50 ">
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">  
+            <h1 className="text-3xl font-bold text-gray-600  text-center tracking-tight md:text-2xl m-5">Make Part of Our Community</h1>    
+          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
+            
+            <div  className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
+            <h1 className="text-xl font-bold text-sky-500  text-center tracking-tight md:text-2xl ">
                 Sign Up
             </h1>
-            <div  className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
             <form onSubmit={handleSignupSubmit}>
-               {/*  <div>
-                    <label>Profile Picture:</label>
-                    <input type="image" name="profile picture" value={picture} onChange={(e) => setPicture(e.target.value)}/>
-                </div> */}
                 <div>
-                    <label>User Name:</label>
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">User Name:</label>
                     <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                     type="text" 
                     name="user name" 
@@ -78,7 +77,7 @@ function SignupPage () {
                 </div>
 
                 <div>
-                    <label>Email:</label>
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Email:</label>
                     <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                     type="email" 
                     name="email" 
@@ -87,7 +86,7 @@ function SignupPage () {
                 </div>
 
                 <div>
-                    <label>Password:</label>
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password:</label>
                     <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                     type="password" 
                     name="password" 
@@ -103,6 +102,7 @@ function SignupPage () {
                 {error && <p>{error}</p>}
             </form>
             </div>
+        </div>
         </div>
         </section>
 

@@ -57,23 +57,47 @@ when the donation is done the user should be redirected to the user dashboard or
 
     return (
         <div>
-            <article>
-                <h1>{institution.name}</h1>
-                <img src={institution.image} alt={institution.name} />
+            <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full mt-10">
+                <div className="flex flex-col border-b-2 border-gray-600 mb-5">
+                <h1 className="font-bold text-sky-500 text-5xl mb-2">{institution.name}</h1>
+                <h3 className="text-gray-700 text-sky-700 text-2xl mb-2">{institution.type}</h3>
                 <h2>{institution.description}</h2>
-                <p>{institution.address}</p>
-                <p>{institution.email}</p>
-                <p>{institution.about}</p>
-                <a href={institution.website}><p>{institution.website}</p></a>
-                <p>{institution.phone}</p>
+                </div>
+                <div  className="flex flex-wrap gap-2 justify-center items-center m-5">
+                <img src={institution.image} alt={institution.name} className="object-cover"/>
+                </div>
+            
+                
+                <div className="flex flex-wrap gap-2 justify-center items-center">
+                <div className="flex flex-row border-2 border-sky-500 p-1 w-fit rounded-md mt-5 space-x-5">
+                <p><strong>Adress:</strong>{institution.address}</p>
+                <p><strong>Phone:</strong>{institution.phone}</p>
+                <p><strong>Email:</strong>{institution.email}</p>
+                <strong>Website:</strong><a href={institution.website}><p>{institution.website}</p></a>
+                </div>
+                <div className="flex flex-col  h-40 border-2 border-gray-600 rounded-md m-3">
+                <p className="text-gray-700 text-xl p-2">{institution.about}</p>
+                </div>
+                </div>
+               
+                
             </article>
-            <article>
-                <div>
-                <div>
+            <article className="flex  max-w-7xl mx-auto sm:px-6 lg:px-8 justify-between items-center">
+            <div>
+                <DonationForm id={id} institutionId={institutionId} donations={donations} />
+            </div>
+            <div>
+                
+           {/*  <CommentComponent institutionId={institutionId}  /> */}
+            </div>
+        
+            </article>
+            <article className=" flex flex-col-reverse max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full mt-10 flex flex-row justify-between ">
+                <div className="border- border-sky-500 p-1 rounded-md mt-5 w-96">
                          <h2><strong>Donations</strong></h2>
                         {institution.donations && institution.donations.map((donation, index) => {
                             return (
-                                <div key={index}>
+                                <div key={index} className="flex flex-col border-2 border-sky-500 p-1  rounded-md">
                                 
                                     <p><strong>Donor: </strong> 
                                      {donations.donor && (
@@ -89,34 +113,8 @@ when the donation is done the user should be redirected to the user dashboard or
                             )
                         })} 
                     </div>
-                </div>
+             
             </article>
-            <article>
-                <div>
-                <DonationForm id={id} institutionId={institutionId} donations={donations} />
-                </div>
-            </article>
-            <section>
-                        <div>
-                        <h2><strong>Comments</strong></h2>
-                        {institution.comments && institution.comments.map((comment, index) => {
-                            return (
-                                <div key={index}>
-                                     <p><strong>{comment.user.name}</strong></p> 
-                                    <p><span>{comment.date}</span></p>
-                                    <p>"{comment.comment}"</p>
-                                    {comment._id && (
-                                        <button onClick={() => handleDeleteComment(comment._id)}>delete</button>
-                                    )}
-                                    
-                                </div>
-                            )
-                        })}
-                        </div>
-            </section>
-            <section>
-                <CommentComponent institutionId={institutionId}  />
-            </section>
         </div>
 
     )

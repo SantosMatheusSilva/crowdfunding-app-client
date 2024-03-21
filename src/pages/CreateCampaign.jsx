@@ -23,10 +23,10 @@ function CreateCampaign () {
     const {userId} = useParams(); 
     const {user, authenticateUser} = useContext(AuthContext);
 
+    console.log('User --->', user);
     
     // Here we Initialize the useNavigate hook
     const navigate = useNavigate();
-
 
     const handleTitle = (e) => setTitle(e.target.value);
     const handleCampaignImage = (e) => setCampaignImage(e.target.value);
@@ -57,9 +57,15 @@ function CreateCampaign () {
         const reqBody = {title, campaignImage, promIntroduction, budget, cause, description, goalAmount, endDate, images};
         console.log(reqBody);
 
+        console.log('User --->', user);
+
+        const URL = user?._id 
+            ? `${API_URL}/api/user/${user._id}/campaign`
+            : `${API_URL}/api/user/HDHHHD/campaign`;
+
         try{
             const response = await axios
-                .post(`${API_URL}/api/user/${user._id}/campaign`, reqBody)
+                .post(URL, reqBody)
                 navigate("/support");
         } 
         catch(error) {
@@ -69,14 +75,15 @@ function CreateCampaign () {
         };
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full mt-10">
-            <div className=" flextext-center mb-10 mt-10   ">
+            <h1 className="text-3xl font-bold text-5xl text-sky-600 border-b-2 border-sky-500">Create a Campaign</h1>
+            <div className=" flextext-center mb-10 mt-10  border-2 p-5 ">
                 <img src={form} alt="" className=" h-30"/>
-                <h1 className="text-3xl font-bold text-gray-800 p-5">Create a Campaign</h1>
+                
             </div>
         <form onSubmit={handleCampaignSubmit}>
             <div className="pt-6 mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3">
-                    <span className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">
+                    <span className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">
                         1.
                     </span> 
                     Give your campaign a Title *
@@ -90,7 +97,7 @@ function CreateCampaign () {
             </div>
             <div className="mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3">
-                    <span  className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">
+                    <span  className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">
                         2.
                     </span>
                     Give it an image that will represent it *
@@ -105,7 +112,7 @@ function CreateCampaign () {
             </div>
             <div className="mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3">
-                    <span  className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">3.</span>
+                    <span  className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">3.</span>
                      Select a cause that suites your campaign *
                 </h3>
                 {/* <label>Cause:</label> */}
@@ -121,7 +128,7 @@ function CreateCampaign () {
             </div>
             <div className="mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3">
-                    <span  className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">4.</span>
+                    <span  className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">4.</span>
                      Set the goal amount *
                 </h3>
                 <label>value in euros:</label>
@@ -134,7 +141,7 @@ function CreateCampaign () {
             </div>
             <div className="mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3">
-                    <span  className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">5.</span>
+                    <span  className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">5.</span>
                      Give it a  detailed description *
                 </h3>
                 {/* <label>Description:</label> */}
@@ -148,7 +155,7 @@ function CreateCampaign () {
             </div>
             <div className="mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3">
-                    <span className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">6.</span> 
+                    <span className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">6.</span> 
                     Introduce your self *
                 </h3>
                 {/* <label>Description:</label> */}
@@ -162,7 +169,7 @@ function CreateCampaign () {
             </div>
             <div className="mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3">
-                    <span className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">7.</span> 
+                    <span className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">7.</span> 
                     Define the budget and schedule *
                 </h3>
                 {/* <label>Description:</label> */}
@@ -176,7 +183,7 @@ function CreateCampaign () {
             </div>
             <div className="mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3" >
-                    <span className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">8.</span> 
+                    <span className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">8.</span> 
                     Select the campaign end date *
                 </h3>
                 <label>End Date:</label>
@@ -188,7 +195,7 @@ function CreateCampaign () {
             </div>
             <div className="mb-6">
                 <h3 className="block text-lg font-medium text-gray-800 mb-3">
-                    <span className=" bg-blue-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">9.</span> 
+                    <span className=" bg-sky-500 text-white font-semibold rounded-full p-2 w-10 h-6 mr-2">9.</span> 
                     Add proof images or documents (Up to 3)
                 </h3>
                 <label> Upload Images:</label>
@@ -212,7 +219,7 @@ function CreateCampaign () {
                  />
             </div>
             <div className="mb-6 flex justify-center">
-                <button type="submit" className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-indigo-600 focus:outline-none ">
+                <button type="submit" className="px-6 py-2 bg-sky-600 text-white font-semibold rounded-md hover:bg-indigo-600 focus:outline-none ">
                     Create Campaign
                 </button>
             </div>

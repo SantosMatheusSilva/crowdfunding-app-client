@@ -19,13 +19,15 @@ function InstitutionsCards () {
     }, []);
 
     return (
-        <div className="flex flex-col gap-10 border-sky-500">
+        <div className="flex flex-col gap-10 border-sky-500 m-10">
             {institutions.map ((institution) => (
-                <div key={institution._id} className="max-w-sm-md-lg rounded overflow-hidden shadow-lg  pl-0.5 w-3/5 h-96">
+                <div key={institution._id} className="max-w-sm-md-lg rounded overflow-hidden shadow-lg  pl-0.5 w-3/5 h-96 border-2 border-gray-500 p-4">
                     <Link to={`/institutions-details-page/${institution._id}`}>
-                        <h2>{institution.name}</h2>
+                        <div className="p-2">
+                        <h2 className="font-bold text-sky-700 text-xl mb-2">{institution.name}</h2>
                         <img src={institution.image} alt="" className="w-500 h-300 object-cover"/>
-                        <p>{institution.type}</p>
+                        <p className="text-gray-700 text-sky-700 text-base">{institution.type}</p>
+                        </div>
                     </Link>
                 </div>
             ))}
