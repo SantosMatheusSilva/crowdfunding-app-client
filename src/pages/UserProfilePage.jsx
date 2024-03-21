@@ -5,7 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
 // Import the server 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 
 function UserProfilePage() {

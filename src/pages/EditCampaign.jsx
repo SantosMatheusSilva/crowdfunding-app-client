@@ -4,7 +4,7 @@ import { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context";
 // Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function EditCampaign () {
     /* onst {userId, campaignId} = useParams(); */
@@ -19,7 +19,7 @@ function EditCampaign () {
     const [promIntroduction, setPromIntroduction] = useState("");
     const [budget, setBudget] = useState("");
     const [status, setStatus] = useState(["active", "completed", "canceled"]);
-
+    const {userId, campaignId} = useParams();
     const {user, authenticateUser} = useContext(AuthContext);
     
     // Initialize the useNavigate hook

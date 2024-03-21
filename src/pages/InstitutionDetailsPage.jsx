@@ -7,7 +7,7 @@ import CommentComponent from "../components/CommentComponent";
 import { AuthContext } from "../context/auth.context";
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function InstitutionDetailsPage () {
     const {user} = useContext(AuthContext);
@@ -116,8 +116,72 @@ when the donation is done the user should be redirected to the user dashboard or
              
             </article>
         </div>
-
+      
     )
 }
 
 export default InstitutionDetailsPage;
+
+{ /*  <div>
+<article>
+    <h1>{institution.name}</h1>
+    <img src={institution.image} alt={institution.name} />
+    <h2>{institution.description}</h2>
+    <p>{institution.address}</p>
+    <p>{institution.email}</p>
+    <p>{institution.about}</p>
+    <a href={institution.website}><p>{institution.website}</p></a>
+    <p>{institution.phone}</p>
+</article>
+<article>
+    <div>
+    <div>
+             <h2><strong>Donations</strong></h2>
+            {institution.donations && institution.donations.map((donation, index) => {
+                return (
+                    <div key={index}>
+                    
+                        <p><strong>Donor: </strong> 
+                         {donations.donor && (
+                            <div>
+                                <p>{donation.donor.name}</p>
+                            </div>
+                        )} 
+                        </p>
+                        <p><span>{donation.date}</span></p>
+                        <p><strong>Amount: </strong>{donation.amount}€</p>
+                        <p><strong></strong>"{donation.comments}"</p>
+                    </div>
+                )
+            })} 
+        </div>
+    </div>
+</article>
+<article>
+    <div>
+    <DonationForm id={id} institutionId={institutionId} donations={donations} />
+    </div>
+</article>
+<section>
+            <div>
+            <h2><strong>Comments</strong></h2>
+            {institution.comments && institution.comments.map((comment, index) => {
+                return (
+                    <div key={index}>
+                         <p><strong>{comment.user.name}</strong></p> 
+                        <p><span>{comment.date}</span></p>
+                        <p>"{comment.comment}"</p>
+                        {comment._id && (
+                            <button onClick={() => handleDeleteComment(comment._id)}>delete</button>
+                        )}
+                        
+                    </div>
+                )
+            })}
+            </div>
+</section>
+<section>
+    <CommentComponent institutionId={institutionId}  />
+</section>
+</div> */
+}

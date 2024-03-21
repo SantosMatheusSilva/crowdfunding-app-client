@@ -3,11 +3,12 @@ import { useParams} from 'react-router-dom';
 import { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context";
+import Completion from "/stripe/Completion.jsx";
 //Necessary imports for stripe:
 //Import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function DonationForm (props) { // props ??
     const {campaignId, institutionId} = props;
@@ -19,13 +20,7 @@ function DonationForm (props) { // props ??
     const [donation, setDonation] = useState([]);
     const {userId} = useParams(); 
     const {user, authenticateUser} = useContext(AuthContext);
-    //Stripe
-    //const [success, setSuccess] = useState(false);
-
-    // Initialize Stripe
-    //const stripe = useStripe()
-    //Initialize Stripe Elements
-    //const elements = useElements()
+  
 
     const handleAmount = (e) => setAmount(e.target.value);
     const handlePaymentMethod = (e) => setPaymentMethod(e.target.value);
@@ -34,10 +29,10 @@ function DonationForm (props) { // props ??
      const handleDonationSubmit = async (e) => {
          e.preventDefault();
 
-       /*   const {error, paymentMethod }= await stripe.createPaymentMethod({
-             type: "card",
-             card: elements.getElement(CardElement),
-         })  */
+      /*   const {error, paymentMethod }= await stripe.createPaymentMethod({
+            type: "card",
+            card: elements.getElement(CardElement),
+        }) */
        
          if(!amount || amount <= 0){ 
              setErrors("Please enter an amount.");
@@ -52,37 +47,32 @@ function DonationForm (props) { // props ??
          const reqBody = {amount, paymentMethod, comments};
          console.log(reqBody);
 
-         try {
-             const response = await axios
+        try {
+            const response = await axios
             .post(`${API_URL}/api/user/${user._id}/${campaignId ? "campaign" : "institutions"}/${campaignId || institutionId}/donations`, reqBody); // TEST
-             console.log(response.data);
+            console.log(response.data);
 
              setAmount("");
              setPaymentMethod("");
              setComments("");
 
-             alert("Thank you for your donation!");
-           setStatus("completed");
-             /* navigate(`/campaigns-details-page/${campaignId}`); */
-            
+            alert("Thank you for your donation!");
+            setStatus("completed");
+            /* navigate(`/campaigns-details-page/${campaignId}`); */
             window.location.reload();
 
-         }
+        }
         catch(error) {
             console.log(error);
-             setErrors("An error occurred while submiting your donation. Please try again.");
+            setErrors("An error occurred while submiting your donation. Please try again.");
         }
+
+       
 
     }
 
-   
-// ================================ here we link the donation button to the payment stripe system ================================
-
-
-// ================================ here we end the block of code for linking the donation button to the stripe payment system  ================================
-    
     return (
-        <div className=" border-2 border-sky-200 rounded p-4 h-80 w-96">
+        <div className="border-2border-sky-500">
             <h1>Make a Donation </h1>
             <div className="border-2border-sky-500 p-4">
                 <form onSubmit={handleDonationSubmit}>
@@ -110,9 +100,4 @@ function DonationForm (props) { // props ??
                     </div>
                 </form>
             </div>
-        </div>
-    )
-}
-
-
-export default DonationForm;
+</div> */ }

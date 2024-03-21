@@ -10,7 +10,7 @@ const PUBLIC_KEY = "pk_test_51OtXZPFX1zDqFMubqatRbGTVyw8bDN2ygsAAl8JqFhcZE7ZO7Vg
 
 const stripeTestPromise = loadStripe(PUBLIC_KEY);
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function Payment() {
 	

@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import form from "../assets/form.svg";
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = "https://crowdfunding-app-server.onrender.com";
 
 function CreateCampaign () {
     const [title, setTitle] = useState("");
@@ -23,8 +23,11 @@ function CreateCampaign () {
     const {userId} = useParams(); 
     const {user, authenticateUser} = useContext(AuthContext);
 
+<<<<<<< HEAD
     console.log('User --->', user);
     
+=======
+>>>>>>> 8405f6fc84056c8219629080b0c42b459ba0e133
     // Here we Initialize the useNavigate hook
     const navigate = useNavigate();
 
@@ -119,7 +122,7 @@ function CreateCampaign () {
                 <select className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                  value={cause}
                  onChange={handleCause}>
-                    <option value="Dreams">Dream</option>
+                    <option value="Dream">Dream</option>
                     <option value="Education">Education</option>
                     <option value="Health">Health</option>
                     <option value="Emergency">Emergency</option>
