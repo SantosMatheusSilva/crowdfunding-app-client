@@ -23,9 +23,13 @@ function CreateCampaign () {
     const {userId} = useParams(); 
     const {user, authenticateUser} = useContext(AuthContext);
 
+<<<<<<< HEAD
+    console.log('User --->', user);
+    
+=======
+>>>>>>> 8405f6fc84056c8219629080b0c42b459ba0e133
     // Here we Initialize the useNavigate hook
     const navigate = useNavigate();
-
 
     const handleTitle = (e) => setTitle(e.target.value);
     const handleCampaignImage = (e) => setCampaignImage(e.target.value);
@@ -56,9 +60,15 @@ function CreateCampaign () {
         const reqBody = {title, campaignImage, promIntroduction, budget, cause, description, goalAmount, endDate, images};
         console.log(reqBody);
 
+        console.log('User --->', user);
+
+        const URL = user?._id 
+            ? `${API_URL}/api/user/${user._id}/campaign`
+            : `${API_URL}/api/user/HDHHHD/campaign`;
+
         try{
             const response = await axios
-                .post(`${API_URL}/api/user/${user._id}/campaign`, reqBody)
+                .post(URL, reqBody)
                 navigate("/support");
         } 
         catch(error) {

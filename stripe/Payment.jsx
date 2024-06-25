@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
+
 import { Elements } from "@stripe/react-stripe-js";
+//import CheckoutForm from "./CheckoutForm";
+=======
+import { Elements } from "@stripe/react-stripe-js";
+>>>>>>> 8405f6fc84056c8219629080b0c42b459ba0e133
 import CheckoutForm from "../stripe/CheckOutForm";
 import { loadStripe } from "@stripe/stripe-js";
 
