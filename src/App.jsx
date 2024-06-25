@@ -17,18 +17,13 @@ import EditCampaign from "./pages/EditCampaign.jsx";
 import Navbar from "./components/Navbar.jsx";
 import SideBar from "./components/SideBar.jsx";
 import Footer from "./components/Footer.jsx";
+import EditProfile from "./components/EditProfile.jsx";
 // import stripe components below :
 import Payment from "../stripe/Payment.jsx";
 import Completion from "../stripe/Completion.jsx";
 
 function App() {
-const location = useLocation();
 
-  // Function to check if the current location matches certain paths
-/*   const shouldShowSidebar = () => {
-    const { } = location;
-    return !['/login', '/signup'].includes(pathname);
-  }; */
 
   return (
     <div>
@@ -41,6 +36,7 @@ const location = useLocation();
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/user-profile-page" element={<UserProfilePage />} />
+        <Route path="/user-profile-page/edit" element={<EditProfile />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="/create-campaign" element={<CreateCampaign />} />
