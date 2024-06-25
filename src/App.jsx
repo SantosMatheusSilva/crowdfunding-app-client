@@ -1,4 +1,4 @@
-import {Routes, Route, useLocation} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import './App.css'
 // importing the pages bellow:
 import HomePage from "./pages/HomePage.jsx";
