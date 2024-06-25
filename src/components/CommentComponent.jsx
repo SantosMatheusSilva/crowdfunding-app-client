@@ -4,7 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
 
 // Import / Declare the local host:
-const API_URL = process.env.VITE_SERVER_URL;
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 const CommentComponent = (props) => {
   const {campaignId, institutionId} = props;

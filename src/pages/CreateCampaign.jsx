@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import form from "../assets/form.svg";
 
 //Import / Declare the local host:
-const API_URL = process.env.VITE_SERVER_URL;
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 function CreateCampaign () {
     const [title, setTitle] = useState("");

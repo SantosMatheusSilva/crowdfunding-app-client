@@ -11,7 +11,7 @@ import { MdDelete } from "react-icons/md";
 
 
 //Import / Declare the local host:
-const API_URL = process.env.VITE_SERVER_URL;
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 function CampaignsDetailsPage () {
     //const {id} = useParams();
