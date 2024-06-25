@@ -15,7 +15,6 @@ import UserProfilePage from "./pages/UserProfilePage.jsx";
 import EditCampaign from "./pages/EditCampaign.jsx";
 //import components bellow:
 import Navbar from "./components/Navbar.jsx";
-import SideBar from "./components/SideBar.jsx";
 import Footer from "./components/Footer.jsx";
 import EditProfile from "./components/EditProfile.jsx";
 // import stripe components below :
