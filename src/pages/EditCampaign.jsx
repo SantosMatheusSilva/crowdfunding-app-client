@@ -4,7 +4,7 @@ import { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context";
 // Import / Declare the local host:
-const API_URL = "https://crowdfunding-app-server.onrender.com";
+const API_URL = process.env.VITE_SERVER_URL;
 
 function EditCampaign () {
     /* onst {userId, campaignId} = useParams(); */

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.VITE_SERVER_URL;
 
 function InstitutionsCards () {
     const [institutions, setInstitutions] = useState([]);

@@ -1,22 +1,26 @@
+import React, { useState, useEffect } from "react";
 import CampaignsCards from "../components/CampaignsCards";
-import axios from "axios";
-import {useEffect, useState} from "react";
-import InstitutionsCards from "../components/InstitutionsCards";
 
-function SupportPage () {
+
+
+function SupportPage (  ) {
+    const [campaigns, setCampaigns] = useState([]);
+   
+    const updateCampaigns = (updatedCampaigns) => {
+        setCampaigns(updatedCampaigns);
+      };
 
     return (
-        <div>
-           <div className="mt-10 mb-20 p-10">
-                <h1 className="text-3xl font-bold text-5xl text-sky-600 border-b-2 border-sky-500">Make a Change in Someone's Life</h1>
-               <h1 className="text-2xl font-bold text-gray-800 m-10">Support an Institution</h1>
-               <InstitutionsCards />
-           </div>
+        <>
             <div>
-                <h1 className="text-2xl font-bold text-gray-800 m-10">Current Campaigns</h1>
-                <CampaignsCards />
+                <div className="flex  mb-10 m-10 gap-10">
+                    <h1 className="text-3xl font-bold text-gray-600"><span className="text-sky-500">Support a campaign.</span> Make a change in someone's life</h1>
+                </div>
+                <div>
+                <CampaignsCards campaigns={campaigns} updateCampaigns={updateCampaigns} />
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

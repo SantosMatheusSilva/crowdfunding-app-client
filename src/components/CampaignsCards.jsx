@@ -7,7 +7,7 @@ import '@material-tailwind/react'
 
 
 //Import / Declare the local host:
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.VITE_SERVER_URL;
 
 function CampaignsCard () {
   const [campaigns, setCampaigns] = useState([]);

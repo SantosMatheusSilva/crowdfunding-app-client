@@ -8,7 +8,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 
 
 // Import the server 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.VITE_SERVER_URL;
 
 function EditProfile({onClose}) {
     const {user} = useContext(AuthContext);

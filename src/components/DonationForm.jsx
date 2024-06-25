@@ -8,7 +8,7 @@ import Completion from "/stripe/Completion.jsx";
 //Import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 //Import / Declare the local host:
-const API_URL = "https://crowdfunding-app-server.onrender.com";
+const API_URL = process.env.VITE_SERVER_URL;
 
 function DonationForm (props) { // props ??
     const {campaignId, institutionId} = props;

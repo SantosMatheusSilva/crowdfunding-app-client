@@ -4,7 +4,7 @@ import { useNavigate} from "react-router-dom";
 /* import  authService from "../services/auth.service";
  */ 
 //Import / Declare the local host:
-const API_URL = "https://crowdfunding-app-server.onrender.com";
+const API_URL = "http://localhost:5005";
  
 function SignupPage () {
     const[email, setEmail] = useState("");
@@ -58,78 +58,15 @@ function SignupPage () {
 
     return(
         <section className="bg-gray-50 ">
-<<<<<<< HEAD
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">  
             <h1 className="text-3xl font-bold text-gray-600  text-center tracking-tight md:text-2xl m-5">Make Part of Our Community</h1>    
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
             
             <div  className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
             <h1 className="text-xl font-bold text-sky-500  text-center tracking-tight md:text-2xl ">
-=======
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">  
-        <h1 className="text-3xl font-bold text-gray-600  text-center tracking-tight md:text-2xl m-5">Make Part of Our Community</h1>    
-      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
-        
-        <div  className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
-        <h1 className="text-xl font-bold text-sky-500  text-center tracking-tight md:text-2xl ">
-            Sign Up
-        </h1>
-        <form onSubmit={handleSignupSubmit}>
-            <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">User Name:</label>
-                <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                type="text" 
-                name="user name" 
-                value={name} 
-                onChange={handleName}/>
-            </div>
-
-            <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Email:</label>
-                <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                type="email" 
-                name="email" 
-                value={email} 
-                onChange={handleEmail}/>
-            </div>
-
-            <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password:</label>
-                <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                type="password" 
-                name="password" 
-                value={password} 
-                onChange={handlePassword}/>
-            </div>
-
-            <div className="mb-6 flex justify-center mt-6">
-                <button type="submit" className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-indigo-600 focus:outline-none ">
-                    Sign Up
-                </button>
-            </div>
-            {error && <p>{error}</p>}
-        </form>
-        </div>
-    </div>
-    </div>
-    </section>
-
-    )
-}
-
-export default SignupPage;
-
-{/* <section className=" ">      
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <h1 className="text-3xl font-bold text-center p-5  bg-blue-500 text-white font-semibold rounded-md">
->>>>>>> 8405f6fc84056c8219629080b0c42b459ba0e133
                 Sign Up
             </h1>
             <form onSubmit={handleSignupSubmit}>
-<<<<<<< HEAD
-=======
-               
->>>>>>> 8405f6fc84056c8219629080b0c42b459ba0e133
                 <div>
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">User Name:</label>
                     <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
@@ -166,7 +103,6 @@ export default SignupPage;
             </form>
             </div>
         </div>
-<<<<<<< HEAD
         </div>
         </section>
 
@@ -174,6 +110,3 @@ export default SignupPage;
 }
 
 export default SignupPage;
-=======
-        </section> */}
->>>>>>> 8405f6fc84056c8219629080b0c42b459ba0e133

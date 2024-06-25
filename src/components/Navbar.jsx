@@ -10,7 +10,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import EditProfile from "./EditProfile";
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.VITE_SERVER_URL;
 function Navbar () {
     /* const {isLoggedIn} = useContext(AuthContext); */
     const {user, isLoggedIn, logOut} = useContext(AuthContext);
