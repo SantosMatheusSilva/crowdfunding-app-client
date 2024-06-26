@@ -7,7 +7,7 @@ import CommentComponent from "../components/CommentComponent";
 import { AuthContext } from "../context/auth.context";
 
 //Import / Declare the local host:
-const API_URL = process.env.REACT_APP_SERVER_URL;
+const API_URL =process.env.REACT_APP_SERVER_URL;
 
 function InstitutionDetailsPage () {
     const {user, isLoggedIn} = useContext(AuthContext);

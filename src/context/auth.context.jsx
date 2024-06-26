@@ -5,7 +5,7 @@ import axios from "axios";
 const AuthContext = React.createContext();
 
 // Create provider
-const API_URL = process.env.REACT_APP_SERVER_URL;
+const API_URL =process.env.REACT_APP_SERVER_URL;
 
 function AuthProviderWrapper (props) {
     const [user, setUser] = useState(null);

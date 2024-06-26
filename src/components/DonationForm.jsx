@@ -8,7 +8,7 @@
  //Import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
  
  //Import / Declare the local host:
- const API_URL = process.env.REACT_APP_SERVER_URL;
+ const API_URL =process.env.REACT_APP_SERVER_URL;
  
  function DonationForm (props) { // props ??
      const {campaignId, institutionId, onClose} = props;

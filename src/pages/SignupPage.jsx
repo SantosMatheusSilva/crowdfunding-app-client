@@ -4,7 +4,7 @@ import { useNavigate} from "react-router-dom";
 /* import  authService from "../services/auth.service";
  */ 
 //Import / Declare the local host:
-const API_URL = process.env.REACT_APP_SERVER_URL;
+const API_URL =process.env.REACT_APP_SERVER_URL;
  
 function SignupPage () {
     const[email, setEmail] = useState("");
