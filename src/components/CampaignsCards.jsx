@@ -24,7 +24,7 @@ function CampaignsCard () {
         setCampaigns(response.data.campaigns);
         setLoading(false);
       } catch (error) {
-        setError(error);
+        setError("An error occured while loading the page. Please try again later.");
         setLoading(false);
       }
     };
