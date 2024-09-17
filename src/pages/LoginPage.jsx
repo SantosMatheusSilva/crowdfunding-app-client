@@ -8,7 +8,7 @@ import logo from '../assets/logo.png';
 /* import  authService from "../services/auth.service.jsx";
  */ 
 //Import / Declare the local host:
-const API_URL =process.env.REACT_APP_SERVER_URL;
+const API_URL ="https://crowdfunding-app-server.onrender.com";
 console.log('API URL--->', API_URL);
 
 function LoginPage () {

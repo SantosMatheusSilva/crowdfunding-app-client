@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import EditProfile from "../components/EditProfile";
 import { RiLogoutBoxLine } from "react-icons/ri";
 // Import the server
-const API_URL =process.env.REACT_APP_SERVER_URL;
+const API_URL ="https://crowdfunding-app-server.onrender.com";
 
 function UserProfilePage() {
   const { currentUser, isLoggedIn, logOut } = useContext(AuthContext);

@@ -10,7 +10,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import EditProfile from "./EditProfile";
 
-const API_URL =process.env.REACT_APP_SERVER_URL;
+const API_URL ="https://crowdfunding-app-server.onrender.com";
 function Navbar () {
     /* const {isLoggedIn} = useContext(AuthContext); */
     const {user, isLoggedIn, logOut} = useContext(AuthContext);

@@ -7,7 +7,7 @@ import '@material-tailwind/react'
 
 
 //Import / Declare the local host:
-const API_URL =process.env.REACT_APP_SERVER_URL;
+const API_URL ="https://crowdfunding-app-server.onrender.com";
 
 function CampaignsCard () {
   const [campaigns, setCampaigns] = useState([]);
