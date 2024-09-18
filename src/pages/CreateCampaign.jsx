@@ -78,10 +78,10 @@ function CreateCampaign () {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full mt-10">
             <div className='flex flex-row gap-5'>
-            <div>
+            <div className='w-1/2'>
             <h1 className="text-3xl font-bold text-5xl text-sky-600 border-b-2 border-sky-500">Create a Campaign</h1>
             </div>
-            <div className=" flextext-center mb-10 mt-10  border-2 p-5 ">
+            <div className=" flextext-center w-1/2">
                 <img src={form} alt="" className=" h-30"/> 
             </div>
             </div>
